@@ -12,9 +12,7 @@ public class DirtySample {
             if (isNameNotEquals(item, "Aged Brie")
                     && isNameNotEquals(item, "Backstage passes to a TAFKAL80ETC concert")) {
                 if (item.quality > 0) {
-                    if (isNameNotEquals(item, "Sulfuras, Hand of Ragnaros")) {
-                        item.quality = item.quality - 1;
-                    }
+                    changeQuality(item, isNameNotEquals(item, "Sulfuras, Hand of Ragnaros"), item.quality - 1);
                 }
             } else {
                 if (item.quality < 50) {
@@ -22,15 +20,11 @@ public class DirtySample {
 
                     if (isNameEquals(item)) {
                         if (item.sellIn < 11) {
-                            if (item.quality < 50) {
-                                item.quality = item.quality + 1;
-                            }
+                            changeQuality(item, item.quality < 50, item.quality + 1);
                         }
 
                         if (item.sellIn < 6) {
-                            if (item.quality < 50) {
-                                item.quality = item.quality + 1;
-                            }
+                            changeQuality(item, item.quality < 50, item.quality + 1);
                         }
                     }
                 }
@@ -44,19 +38,21 @@ public class DirtySample {
                 if (isNameNotEquals(item, "Aged Brie")) {
                     if (isNameNotEquals(item, "Backstage passes to a TAFKAL80ETC concert")) {
                         if (item.quality > 0) {
-                            if (isNameNotEquals(item, "Sulfuras, Hand of Ragnaros")) {
-                                item.quality = item.quality - 1;
-                            }
+                            changeQuality(item, isNameNotEquals(item, "Sulfuras, Hand of Ragnaros"), item.quality - 1);
                         }
                     } else {
                         item.quality = 0;
                     }
                 } else {
-                    if (item.quality < 50) {
-                        item.quality = item.quality + 1;
-                    }
+                    changeQuality(item, item.quality < 50, item.quality + 1);
                 }
             }
+        }
+    }
+
+    private void changeQuality(Item item, boolean b, int i) {
+        if (b) {
+            item.quality = i;
         }
     }
 
