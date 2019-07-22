@@ -8,7 +8,6 @@ class DirtySample {
     }
 
     public void updateQuality() {
-
         for (Item item : items) {
             if (!item.isNamed("Aged Brie")
                     && !item.isNamed("Backstage passes to a TAFKAL80ETC concert")) {
@@ -23,11 +22,11 @@ class DirtySample {
 
                     if (item.isNamed("Backstage passes to a TAFKAL80ETC concert")) {
                         if (item.sellIn < 11) {
-                            upgradeQualityUntil50(item);
+                            incrementQualityLessThan50(item);
                         }
 
                         if (item.sellIn < 6) {
-                            upgradeQualityUntil50(item);
+                            incrementQualityLessThan50(item);
                         }
                     }
                 }
@@ -49,13 +48,13 @@ class DirtySample {
                         item.quality = 0;
                     }
                 } else {
-                    upgradeQualityUntil50(item);
+                    incrementQualityLessThan50(item);
                 }
             }
         }
     }
 
-    private void upgradeQualityUntil50(Item item) {
+    private void incrementQualityLessThan50(Item item) {
         if (item.quality < 50) {
             item.quality = item.quality + 1;
         }
