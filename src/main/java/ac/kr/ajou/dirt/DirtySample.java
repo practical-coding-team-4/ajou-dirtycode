@@ -18,7 +18,7 @@ public class DirtySample {
                 if (item.quality < 50) {
                     item.quality++;
 
-                    if (isNameEquals(item)) {
+                    if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                         if (item.sellIn < 11) {
                             changeQuality(item, item.quality < 50, item.quality + 1);
                         }
@@ -50,17 +50,14 @@ public class DirtySample {
         }
     }
 
-    private void changeQuality(Item item, boolean b, int i) {
-        if (b) {
-            item.quality = i;
+    private void changeQuality(Item item, boolean condition, int quality) {
+        if (condition) {
+            item.quality = quality;
         }
     }
 
-    private boolean isNameEquals(Item item) {
-        return item.name.equals("Backstage passes to a TAFKAL80ETC concert");
-    }
 
-    private boolean isNameNotEquals(Item item, String s) {
-        return !item.name.equals(s);
+    private boolean isNameNotEquals(Item item, String name) {
+        return !item.name.equals(name);
     }
 }
