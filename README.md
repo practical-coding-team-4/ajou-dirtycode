@@ -128,6 +128,10 @@ private void degradeQualityMoreThan0(Item item) {
 2. calculateSellIn: 다음 sellIn을 계산
 3. calculateExpired: sellIn이 음수일 경우 quality 다시 계산
 
+#### 4. (고민 필요) 아이템 quality변경 메소드를 아이템 클래스로 위임
+JAVA의 OOP 이념에 따르면 quality 최소, 최대 값을 고려하는 코드는 Item 클래스 자체가
+ 알고 있도록 하는 것이 맞다고 생각한다. 해당 Item 클래스가 다르게 사용될 경우도 있다면
+ 불필요한 착업이지만 해당 코드에서는 용도가 하나만 있으므로 위임하도록 한다.
 
 ## TODO
 - private data와 getter setter 사용

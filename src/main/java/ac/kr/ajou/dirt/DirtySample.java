@@ -20,30 +20,19 @@ class DirtySample {
         }
     }
 
-    private void incrementQualityLessThan50(Item item) {
-        if (item.quality < 50) {
-            item.quality = item.quality + 1;
-        }
-    }
-
-    private void decrementQualityMoreThan0(Item item) {
-        if(item.quality > 0)
-            item.quality = item.quality - 1;
-    }
-
     private void calculateQuality(Item item) {
         if(item.isNamed("Aged Brie")) {
-            incrementQualityLessThan50(item);
+            item.incQuality();
         } else if (item.isNamed("Backstage passes to a TAFKAL80ETC concert")) {
-            incrementQualityLessThan50(item);
+            item.incQuality();
             if (item.sellIn < 11) {
-                incrementQualityLessThan50(item);
+                item.incQuality();
             }
             if (item.sellIn < 6) {
-                incrementQualityLessThan50(item);
+                item.incQuality();
             }
         } else {
-            decrementQualityMoreThan0 (item);
+            item.decQuality();
         }
     }
 
@@ -53,11 +42,11 @@ class DirtySample {
 
     private void calculateExpired(Item item) {
         if (item.isNamed("Aged Brie")) {
-            incrementQualityLessThan50(item);
+            item.incQuality();
         } else if(item.isNamed("Backstage passes to a TAFKAL80ETC concert")) {
             item.quality = 0;
         } else {
-            decrementQualityMoreThan0 (item);
+            item.decQuality();
         }
     }
 }
