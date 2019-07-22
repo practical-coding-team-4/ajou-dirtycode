@@ -16,7 +16,7 @@ public class DirtySample {
                 }
             } else {
                 if (item.quality < 50) {
-                    item.quality = item.quality + 1;
+                    item.quality++;
 
                     if (isNameEquals(item)) {
                         if (item.sellIn < 11) {
@@ -31,7 +31,7 @@ public class DirtySample {
             }
 
             if (isNameNotEquals(item, "Sulfuras, Hand of Ragnaros")) {
-                item.sellIn = item.sellIn - 1;
+                item.sellIn--;
             }
 
             if (item.sellIn < 0) {
