@@ -1,6 +1,6 @@
 package ac.kr.ajou.dirt;
 
-class DirtySample {
+public class DirtySample {
     Item[] items;
 
     public DirtySample(Item[] items) {
