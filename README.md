@@ -104,6 +104,31 @@ if (item.isNamed("Aged Brie")) {
 4. 그 외의 일반적인 아이템은 날이 갈 수록 가치가 하나씩 낮아지고,
  유통 기한이 지나면 하나씩 더 낮아진다.
  
+## Refactoring (cont'd)
+이제 부터는 파악한 flow를 바탕으로 리팩토링한다.
+#### 1. Sulfuras는 변경되지 않는다.
+초기에 아이템이 Sulfuras인 경우 다음 아이템으로 속행하여,
+ 성능, 코드 구조상에 이점을 얻을 수 있다.
+```$xslt
+if(item.isNamed("Sulfuras, Hand of Ragnaros"))
+    continue;
+```
+#### 2. 반복적으로 사용되는 method 추출
+Sulfuras 확인이 사라지니 추출할 수 있는 method가 눈에 띈다.
+```$xslt
+private void degradeQualityMoreThan0(Item item) {
+    if (item.quality > 0) {
+        item.quality = item.quality - 1;
+    }
+}
+```
+
+#### 3. 함수 Flow에 따라 method 추출
+1. calculateQuality: 다음 quality를 계산
+2. calculateSellIn: 다음 sellIn을 계산
+3. calculateExpired: sellIn이 음수일 경우 quality 다시 계산
+
+
 ## TODO
 - private data와 getter setter 사용
 - lombok constructor 사용
