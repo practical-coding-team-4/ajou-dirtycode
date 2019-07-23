@@ -7,7 +7,7 @@ public class DirtySample {
         this.items = items;
     }
 
-    public void updateQuality() {
+    public void updateItemsValue() {
         for (Item item : items) {
             if(item.isNamed("Sulfuras, Hand of Ragnaros"))
                 continue;
